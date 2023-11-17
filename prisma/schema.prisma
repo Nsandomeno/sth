@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Asset {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+  slug      String   @unique
+  symbol    String   @unique
+  cmcId     Int      @unique
+
+  prices PriceUsd[]
+}
+
+model PriceUsd {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @db.Timestamp(6)
+  value     Float
+
+  asset   Asset @relation(fields: [assetId], references: [id])
+  assetId Int
+}

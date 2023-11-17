@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": false,
+    "isolatedModules": true,
+    "lib": [
+      "esnext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noUncheckedIndexedAccess": true,
+    "outDir": "dist",
+    "strict": false,
+    "target": "esnext",
+    "useUnknownInCatchVariables": true
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "include": [
+    "src/**/*",
+    "./*.js",
+    "src/**/*.ts",
+    "tests/**/*.ts",
+  ]
+}
